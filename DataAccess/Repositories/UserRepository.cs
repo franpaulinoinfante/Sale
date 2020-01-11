@@ -68,6 +68,7 @@ namespace DataAccess.Repositories
                     Birthday = (DateTime)item["Birthday"],
                     Gender = (string)item["Gender"],
                     Document = (string)item["Document"],
+                    Phone = (string)item["Phone"],
                     UserAddress = (string)item["UserAddress"],
                     Note = (string)item["Note"]
                 });

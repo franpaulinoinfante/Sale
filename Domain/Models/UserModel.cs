@@ -12,12 +12,20 @@ namespace Domain.Models
     public class UserModel
     {
         public int IdUser { get; set; }
+
         public string Lastname { get; set; }
         public string Firstname { get; set; }
+
         public DateTime Birthday { get; set; }
+
         public string Gender { get; set; }
+
         public string Document { get; set; }
+
+        public string Phone { get; set; }
+
         public string UserAddress { get; set; }
+
         public string Note { get; set; }
 
         IUserRepository userRepository;
@@ -54,10 +62,10 @@ namespace Domain.Models
                     Birthday = userEntity.Birthday,
                     Gender = userEntity.Gender,
                     Document = userEntity.Document,
+                    Phone=userEntity.Phone,
                     UserAddress = userEntity.UserAddress,
                     Note = userEntity.Note,
                 });
-
             }
             return lstuserModels;
         }

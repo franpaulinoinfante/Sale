@@ -11,7 +11,7 @@ namespace Presentation.Helps
     {
         public static DialogResult GetDialogResult(string message, string caption)
         {
-            return MessageBox.Show($"{message}", $"{caption}", MessageBoxButtons.YesNo,
+            return MessageBox.Show($"{message}", $"{caption}", MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
     }

@@ -53,13 +53,13 @@ namespace Presentation.Forms
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            ToActiveButtons();
             if (_indexe < 0)
             {
                 MessageBox.Show("Debe elegir un registro");
                 return;
             }
-            customerState = EntityState.Edit;
+            ToActiveButtons();
+            customerState = EntityState.Edit; 
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -204,11 +204,6 @@ namespace Presentation.Forms
         }
 
         private void dgvCustomer_Click(object sender, EventArgs e)
-        {
-            SelectRow();
-        }
-
-        private void SelectRow()
         {
             _indexe = Convert.ToInt32(dgvCustomer.CurrentRow.Index.ToString());
             _id = Convert.ToInt32(dgvCustomer.CurrentRow.Cells["IdCustomer"].Value.ToString());

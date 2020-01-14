@@ -14,6 +14,7 @@ namespace Domain.Models
         public int IdUser { get; set; }
 
         public string Lastname { get; set; }
+
         public string Firstname { get; set; }
 
         public DateTime Birthday { get; set; }
@@ -40,9 +41,19 @@ namespace Domain.Models
             return GetUserModels();
         }
 
+        public void InsertUser()
+        {
+            InsertUserModels();
+        }
+
         public void DeleteUser()
         {
-            DeleteModel();
+            DeleteModels();
+        }
+
+        public void EditUser()
+        {
+            EditUserModels();
         }
 
 
@@ -70,7 +81,36 @@ namespace Domain.Models
             return lstuserModels;
         }
 
-        private void DeleteModel()
+        private void InsertUserModels()
+        {
+            UserEntity userEntity = new UserEntity();
+            userEntity.Lastname = Lastname;
+            userEntity.Firstname = Firstname;
+            userEntity.Birthday = Birthday;
+            userEntity.Gender = Gender;
+            userEntity.Document = Document;
+            userEntity.Phone = Phone;
+            userEntity.UserAddress = UserAddress;
+            userEntity.Note = Note;
+            userRepository.Add(userEntity);
+        }
+
+        private void EditUserModels()
+        {
+            UserEntity userEntity = new UserEntity();
+            userEntity.IdUser = IdUser;
+            userEntity.Lastname = Lastname;
+            userEntity.Firstname = Firstname;
+            userEntity.Birthday = Birthday;
+            userEntity.Gender = Gender;
+            userEntity.Document = Document;
+            userEntity.Phone = Phone;
+            userEntity.UserAddress = UserAddress;
+            userEntity.Note = Note;
+            userRepository.Edit(userEntity);
+        }
+
+        private void DeleteModels()
         {
             userRepository.Remove(IdUser);
         }

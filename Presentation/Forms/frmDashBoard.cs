@@ -16,5 +16,25 @@ namespace Presentation.Forms
         {
             InitializeComponent();
         }
+
+        private void customerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmCustomer frmCliente = new frmCustomer();
+            this.Hide();
+            frmCliente.Show();
+        }
+
+        private void userToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmUser frmUser = new frmUser();
+            this.Hide();
+            frmUser.Show();
+
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

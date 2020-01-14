@@ -1,43 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataAccess.Contracts;
 using DataAccess.Entities;
-using DataAccess.Contracts;
-using DataAccess.Repositories;
+using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DataAccess.Repositories
 {
-    public class CustomerRepository :MasterRepository, ICustomerRepository
+    public class CustomerRepository : MasterRepository, ICustomerRepository
     {
-        private string selectAll;
-        private string insert;
-        private string update;
-        private string delete;
+        private string _selectAll;
+        private string _insert;
+        private string _update;
+        private string _delete;
 
         public CustomerRepository()
         {
-            selectAll = "spGetAll";
-            insert = "spInsert";
-            update = "spUdate";
-            delete = "spDelete";
-        }
-
-        public void Add(CustomerEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Edit(CustomerEntity entity)
-        {
-            throw new NotImplementedException();
+            _selectAll = "spCustomerGetAll";
+            _insert = "spCustomerInsert";
+            _update = "spCustomerEdit";
+            _delete = "spCustomerDelete";
         }
 
         public IEnumerable<CustomerEntity> GeAtll()
         {
-            var tableResult = ExecuteReader(selectAll);
+            var tableResult = ExecuteReader(_selectAll);
             var lstCustomer = new List<CustomerEntity>();
             foreach (DataRow item in tableResult.Rows)
             {
@@ -56,10 +43,40 @@ namespace DataAccess.Repositories
             }
             return lstCustomer;
         }
+        public void Add(CustomerEntity entity)
+        {
+            parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@Lastname", entity.Lastname));
+            parameters.Add(new SqlParameter("@Firstname", entity.Firstname));
+            parameters.Add(new SqlParameter("@Birthday", entity.Birthday));
+            parameters.Add(new SqlParameter("@Gender", entity.Gender));
+            parameters.Add(new SqlParameter("@Document", entity.Document));
+            parameters.Add(new SqlParameter("@Phone", entity.Phone));
+            parameters.Add(new SqlParameter("@CustomerAddress", entity.CustomerAddress));
+            parameters.Add(new SqlParameter("@Note", entity.Note));
+            ExecuteNonQuery(_insert);
+        }
+
+        public void Edit(CustomerEntity entity)
+        {
+            parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@IdCustomer", entity.IdCustomer));
+            parameters.Add(new SqlParameter("@Lastname", entity.Lastname));
+            parameters.Add(new SqlParameter("@Firstname", entity.Firstname));
+            parameters.Add(new SqlParameter("@Birthday", entity.Birthday));
+            parameters.Add(new SqlParameter("@Gender", entity.Gender));
+            parameters.Add(new SqlParameter("@Document", entity.Document));
+            parameters.Add(new SqlParameter("@Phone", entity.Phone));
+            parameters.Add(new SqlParameter("@CustomerAddress", entity.CustomerAddress));
+            parameters.Add(new SqlParameter("@Note", entity.Note));
+            ExecuteNonQuery(_update);
+        }
 
         public void Remove(int Id)
         {
-            throw new NotImplementedException();
+            parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@IdCustomer", Id));
+            ExecuteNonQuery(_delete);
         }
     }
 }

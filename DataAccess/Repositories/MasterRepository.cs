@@ -34,16 +34,16 @@ namespace DataAccess.Repositories
 
         protected DataTable ExecuteReader(string storedProcedure)
         {
-            using (var connection=GetConnection())
+            using (var connection = GetConnection())
             {
                 connection.Open();
-                using (var sqlCmd=new SqlCommand())
+                using (var sqlCmd = new SqlCommand())
                 {
                     sqlCmd.CommandText = storedProcedure;
                     sqlCmd.CommandType = CommandType.StoredProcedure;
                     sqlCmd.Connection = connection;
                     var sqlReader = sqlCmd.ExecuteReader();
-                    using (var tableResult=new DataTable())
+                    using (var tableResult = new DataTable())
                     {
                         tableResult.Load(sqlReader);
                         return tableResult;

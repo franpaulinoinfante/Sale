@@ -45,16 +45,19 @@
     <Compile Include="Contracts\ICategoryRepository.cs" />
     <Compile Include="Contracts\ICustomerRepository.cs" />
     <Compile Include="Contracts\IGenericRepository.cs" />
+    <Compile Include="Contracts\ISupplierRepository.cs" />
     <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="DAEmployee.cs" />
     <Compile Include="Entities\CategoryEntity.cs" />
     <Compile Include="Entities\CustomerEntity.cs" />
+    <Compile Include="Entities\SupplierEntity.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\MasterRepository.cs" />
+    <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>
